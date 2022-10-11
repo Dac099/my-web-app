@@ -1,0 +1,27 @@
+h1{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: center;
+  color: lightseagreen;
+}
+
+img{
+  width: 500px;
+  height: 500px;
+  border: 3px dashed lightskyblue;
+  margin: 0 auto;
+  display: block;
+  border-radius: 3%;
+}
+
+button{
+  width: 120px;
+  height: 40px;
+  margin: 20px auto;
+  display: block;
+  border-radius: 5px;
+  border: 1px dashed lightseagreen;
+  background-color: lightcyan;
+  font-weight: bold;
+  font-size: 30px;
+  color: darkcyan;
+}
