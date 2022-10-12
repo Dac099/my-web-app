@@ -1,4 +1,4 @@
-const img = document.getElementById('imgContainer');
+const container = document.getElementById('imgContainer');
 const reloadBtn = document.getElementById('reload');
 const title = document.getElementById('title');
 
@@ -7,45 +7,47 @@ function buildURL(){
   return `${baseURL}/location/${Math.round(Math.random() * (1 + 126) + 1)}`;
 }
 
-function getCharacters(array){
-  const jsonCharacter = array.map(character => {
-    getCharacterImg(character);
-  });
-
-  return jsonCharacter;
-}
-
-async function getCharacterImg(character){
-  try {
-    const res = await fetch(character);
-    const data = await res.json();
-
-    console.log(data);
-    return data;
-  } catch (error) {
-    console.log(error);
-  } 
-}
-
 async function getLocation(url){
   try {
     const response = await fetch(url);
     const data = await response.json();
-    const characters = data.residents;
-    const dimension = data.dimension;
-
-    title.innerText = dimension;
-    const residents = getCharacters(characters);
-
-    console.log(residents);
+    
+    return data;
   } catch (error) {
     console.log(error);
     alert('An error ocurred, sorry');
   }
 }
 
+async function createContent(data){
+  title.innerText = data.dimension;
 
-reloadBtn.addEventListener('click', () => {
+  if(data.residents.length > 0){
+    const images = [];
+
+    data.residents.forEach(resident => {
+      createCard();
+    });
+
+    return images;
+
+  }else{
+    container.innerHTML = `
+      <h3>No existen personajes para esta Dimensión</h3>
+    `;
+  }
+}
+
+async function createCard(url){
+  const response = await fetch(url);
+  const data = await response.json();
+  const srcImg = data.image;
+
+  return srcImg;
+}
+
+
+reloadBtn.addEventListener('click', async () => {
   let url = buildURL();
-  getLocation(url);
+  const data = await getLocation(url);
 })
