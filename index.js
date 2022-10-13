@@ -1,6 +1,7 @@
 const container = document.getElementById('imgContainer');
 const reloadBtn = document.getElementById('reload');
-const title = document.getElementById('title');
+const place = document.getElementById('name');
+const dimension = document.getElementById('dimension');
 
 function buildURL(){
   const baseURL = 'https://rickandmortyapi.com/api';
@@ -20,16 +21,14 @@ async function getLocation(url){
 }
 
 async function createContent(data){
-  title.innerText = data.dimension;
+  place.innerHTML = `<span id="p1">Lugar:</span> ${data.name}`;
+  dimension.innerHTML = `<span id="p2">Dimension:</span> ${data.dimension}`;
 
   if(data.residents.length > 0){
-    const images = [];
 
     data.residents.forEach(resident => {
-      createCard();
+      createCard(resident);
     });
-
-    return images;
 
   }else{
     container.innerHTML = `
@@ -43,11 +42,17 @@ async function createCard(url){
   const data = await response.json();
   const srcImg = data.image;
 
+  const img = document.createElement('img');
+  img.src = srcImg;
+
+  container.append(img);
   return srcImg;
 }
 
 
 reloadBtn.addEventListener('click', async () => {
+  container.innerHTML = '';
   let url = buildURL();
   const data = await getLocation(url);
+  createContent(data);
 })

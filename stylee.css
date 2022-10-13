@@ -5,8 +5,7 @@ h1{
 }
 
 img{
-  width: 500px;
-  height: 500px;
+  width: 100%;
   border: 3px dashed lightskyblue;
   margin: 0 auto;
   display: block;
@@ -24,4 +23,28 @@ button{
   font-weight: bold;
   font-size: 30px;
   color: darkcyan;
+  cursor: pointer;
+}
+
+#imgContainer{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.description{
+  display: flex;
+  padding: 0px 20px;
+  justify-content: space-evenly;
+  font-size: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+#p1, #p2{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: darkcyan;
+  font-weight: bold;
 }
