@@ -5,16 +5,68 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./stylee.css">
-  <title>Rick and Morty</title>
+  <title>Todo APP</title>
 </head>
 <body>
-  <h1>Personajes de Rick And Morty</h1>
-  <section class="description">
-    <p id="name"></p>
-    <p id="dimension"></p>
-  </section>
-  <section id="imgContainer"></section>
-  <button type="button" id="reload">&#8635;</button>
+  <header>
+    <p>My todos</p>
+    <p>&#9749;</p>
+  </header>
+
+  <main>
+    <article class="card-profile card">
+      <section class="card-profile--head">
+        <p>&#9865;</p>
+        <p>Now you are <span class="user-name"></span></p>
+      </section>
+      <table class="card-profile--data">
+        <tr>
+          <th>Username</th>
+          <td id="profile_username"></td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td id="proflie_email"></td>
+        </tr>
+        <tr>
+          <th>Phone</th>
+          <td id="profile_phone"></td>
+        </tr>
+        <tr>
+          <th>Website</th>
+          <td id="profile_website"></td>
+        </tr>
+        <tr>
+          <th>Id</th>
+          <td id="profile_id"></td>
+        </tr>
+      </table>
+    </article>
+    
+    <p class="card todos-title">My Todos &#9783;</p>
+
+    <article class="card-todos card">
+
+      <table class="task">
+        <tr>
+          <th>ID</th>
+          <td id="task-id">12</td>
+        </tr>
+
+        <tr>
+          <td id="task-title" colspan="2">Do the dishes</td>
+        </tr>
+
+        <tr>
+          <td>Is completed?</td>
+          <td id="task-completed">&#9746;</td>
+        </tr>
+      </table>
+
+    </article>
+  </main>
+
+  <footer></footer>
 </body>
-<script src="./index.js"></script>
+<script src="./index.js" type="module"></script>
 </html>
