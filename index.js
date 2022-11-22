@@ -1,4 +1,4 @@
-import { getAllTasks, getUserById } from './fetch-data.js';
+import { getAllTasks, getUserById } from './users.controller.js';
 
 const url = 'https://jsonplaceholder.typicode.com/';
 const randomUser = Math.floor(Math.random() * 10) + 1;

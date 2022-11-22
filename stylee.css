@@ -32,7 +32,7 @@ header p:first-child{
 }
 
 header p:last-child{
-  font-size: 90px;
+  font-size: 50px;
   color: var(--text-color);
 }
 
