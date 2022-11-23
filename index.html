@@ -5,68 +5,28 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./stylee.css">
-  <title>Todo APP</title>
+  <title>Sign Up</title>
 </head>
 <body>
-  <header>
-    <p>My todos</p>
-    <p>&#9749;</p>
-  </header>
+  <p class="tittle">Welcome to the To-Do app with <a href="https://jsonplaceholder.typicode.com/">{JSON} PLaceholder</a></p>
 
-  <main>
-    <article class="card-profile card">
-      <section class="card-profile--head">
-        <p>&#9865;</p>
-        <p>Now you are <span class="user-name"></span></p>
-      </section>
-      <table class="card-profile--data">
-        <tr>
-          <th>Username</th>
-          <td id="profile_username"></td>
-        </tr>
-        <tr>
-          <th>Email</th>
-          <td id="proflie_email"></td>
-        </tr>
-        <tr>
-          <th>Phone</th>
-          <td id="profile_phone"></td>
-        </tr>
-        <tr>
-          <th>Website</th>
-          <td id="profile_website"></td>
-        </tr>
-        <tr>
-          <th>Id</th>
-          <td id="profile_id"></td>
-        </tr>
-      </table>
-    </article>
-    
-    <p class="card todos-title">My Todos &#9783;</p>
+  <form action="./app.html" class="signup formSign" id="signup">
+    <input type="text" placeholder="Name" name="name" id="name">
+    <input type="text" placeholder="Username" name="username" id="username">
+    <input type="email" placeholder="Email" name="email" id="email">
+    <button type="button" id="signup_btn">Sign Up</button>
+  </form>
 
-    <article class="card-todos card">
+  <form action="./app.html" class="signin formSign" id="signin">
+    <input type="text" placeholder="Name" name="name" id="name">
+    <input type="text" placeholder="Username" name="username" id="username">
+    <button type="button" id="signin_btn">Sign In</button>
+  </form>
 
-      <table class="task">
-        <tr>
-          <th>ID</th>
-          <td id="task-id">12</td>
-        </tr>
-
-        <tr>
-          <td id="task-title" colspan="2">Do the dishes</td>
-        </tr>
-
-        <tr>
-          <td>Is completed?</td>
-          <td id="task-completed">&#9746;</td>
-        </tr>
-      </table>
-
-    </article>
-  </main>
-
-  <footer></footer>
+  <section class="sing-in--option" id="sing-in--option">
+    <p>Already have an account!</p>
+    <button type="button" id="logged">Sing In</button>
+  </section>
 </body>
-<script src="./index.js" type="module"></script>
+<script src="./sing-controller.js"></script>
 </html>

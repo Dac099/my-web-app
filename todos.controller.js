@@ -64,3 +64,15 @@ export async function getTask(url, id){
     console.log(error);
   }
 }
+
+// Get all task
+export async function getAllTasks(url, userId){
+  try {
+    
+    const res = await fetch(`${url}/?userId=${userId}`);
+    const data = await res.json();
+
+  } catch (error) {
+    console.log(error);
+  }
+}

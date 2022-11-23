@@ -1,9 +1,10 @@
 :root{
-  --bg-color: #232946;
-  --button-color: #eebbc3;
-  --text-color: #b8c1ec;
-  --btn-text: #232946;
-  --title-color: #fffffe;
+  --bg-color: #fef6e4;
+  --button-color: #f3d2c1;
+  --text-color: #001858;
+  --btn-text: #172c66;
+  --title-color: #001858;
+  --task-bg: #f582ae;
 }
 
 *{
@@ -82,7 +83,7 @@ header p:last-child{
 
 .task{
   width: 90%;
-  background-color: var(--text-color);
+  background-color: var(--task-bg);
   padding: 5px;
   border-radius: 10px;
 }
