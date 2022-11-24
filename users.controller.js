@@ -1,47 +1,18 @@
-// Create user
-export async function createUser(url, formData){
-  try {
-    const post = await fetch(url, {
-      method: 'POST',
-      body: formData
-    });
-
-    const result = await post.json();
-    console.log(result);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-// Delete user
-export async function deleteUser(url, id){
-  try {
-    
-    const res = await fetch(`${url}/${id}`, {
-      method: 'DELETE'
-    })
-
-    const data = await res.json();
-
-    console.log(data);
-
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 // Update user
-export async function updateUser(url, id, formData){
+export async function updateUser(url, id, user_data){
   try {
 
-    const res = await fetch(`${url}/${id}`, {
+    const res = await fetch(`${url}${id}`, {
       method: 'PUT',
-      body: formData
+      headers: {
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify(user_data)
     });
 
     const data = await res.json();
 
-    console.log(data);
+    return data;
 
   } catch (error) {
     console.log(error);
@@ -49,15 +20,27 @@ export async function updateUser(url, id, formData){
 }
 
 // Get user
-export async function getUser(url, id){
+export async function getUser(url, username){
   try {
     
-    const res = await fetch(`${url}/${id}`);
+    const res = await fetch(`${url}/?username=${username}`);
     
     const data = await res.json();
 
-    console.log(data);
+    return data;
 
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// Get Users
+export async function getUsers(url){
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+
+    return data;
   } catch (error) {
     console.log(error);
   }
