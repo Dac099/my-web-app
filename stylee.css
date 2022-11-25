@@ -13,6 +13,12 @@
   box-sizing: border-box;
 }
 
+a{
+  text-decoration: none;
+  color: var(--title-color);
+  cursor: pointer;
+}
+
 body{
   background-color: var(--bg-color);
   font-family: 'Courier New', Courier, monospace;
@@ -28,7 +34,7 @@ header{
   color: var(--title-color);
 }
 
-header p:first-child{
+header a{
   font-weight: bold;
 }
 
@@ -74,6 +80,42 @@ header p:last-child{
 .users-elements{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+  max-width: 500px;
+  min-height: 80px;
+  margin: 10px auto;
+  gap: 10px;
+}
+
+.users-elements a{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.users-elements a:hover{
+  background-color: var(--btn-text);
+  color: var(--button-color);
+  font-weight: bold;
+  transition: 0.2s linear;
+}
+
+.users-elements a p:first-child{
+  font-size: 20px;
+}
+
+.users-elements a:hover p:first-child{
+  font-size: 40px;
+  transition: 0.3s ease-in;
+}
+
+.users-elements a p{
+  display: inline;
 }
 
 .task{
@@ -111,4 +153,8 @@ header p:last-child{
 
 .user-name{
   font-size: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  
 }
