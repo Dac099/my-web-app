@@ -96,6 +96,7 @@ header p:last-child{
   align-items: center;
   justify-content: center;
   border-radius: 10px;
+  background-color: var(--button-color);
 }
 
 .users-elements a:hover{
@@ -118,33 +119,6 @@ header p:last-child{
   display: inline;
 }
 
-.task{
-  width: 90%;
-  background-color: var(--task-bg);
-  padding: 5px;
-  border-radius: 10px;
-}
-
-.task tr:first-child th{
-  text-align: left;
-}
-
-.task tr:nth-child(2) td{
-  text-align: center;
-  font-size: 18px;
-}
-
-.task tr:last-child td:last-child{
-  font-size: 35px;
-}
-
-.task-done{
-  color: greenyellow;
-}
-
-.task-undone{
-  color: red;
-}
 
 .data-user{
   color: var(--task-bg);
@@ -153,6 +127,19 @@ header p:last-child{
 
 .user-name{
   font-size: 30px;
+}
+
+/* Styles for the hearth in comments section */
+p[data-status='true']{
+  color: var(--task-bg);
+}
+
+p[data-status='false']{
+  color: var(--btn-text);
+}
+
+.like-comment{
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 768px) {

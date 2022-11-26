@@ -6,7 +6,9 @@ const user_phone = document.getElementById('profile_phone');
 const user_website = document.getElementById('profile_website');
 const user_id = document.getElementById('profile_id');
 const last_comments = document.querySelector('.my-last-comments');
-const comments_url = 'https://jsonplaceholder.typicode.com/posts';
+
+const posts_url = 'https://jsonplaceholder.typicode.com/posts';
+const comments_url = 'https://jsonplaceholder.typicode.com/comments';
 
 function buildUser(iterable){
   const object_data = {};
@@ -30,8 +32,41 @@ async function getLastUserPost(url, userId){
   }
 }
 
+async function getCommentsByPostId(url, postId){
+  try {
+    const res = await fetch(`${url}/?postId=${postId}`);
+    const data = await res.json();
 
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
+function printComments(comments){
+  comments.forEach(comment => {
+    last_comments.append(createCommentCard(comment));
+  });
+}
+
+function createCommentCard(comment){
+  const article = document.createElement('article');
+  article.classList.add('comment-card');
+
+  article.innerHTML = `
+    <p>${comment.email}</p>
+    <p>${comment.body}</p>
+    <p data-status="false" class="like-comment">&#10084;</p>
+  `;
+
+  article.addEventListener('click', (e) =>{
+    if(e.target.dataset.status){
+      e.target.dataset.status = (e.target.dataset.status === 'false') ? 'true' : 'false';
+    }
+  });
+
+  return article;
+}
 
 window.onload = async() => {
   // Buil an object from the localstorage data
@@ -47,5 +82,11 @@ window.onload = async() => {
   user_id.innerHTML = id;
 
   //Get the last post of the user
-  const postId = await getLastUserPost(comments_url, id);
+  const postId = await getLastUserPost(posts_url, id);
+
+  //Get all the comments width the postId
+  const last_comments = await getCommentsByPostId(comments_url, postId);
+
+  printComments(last_comments);
+
 }
