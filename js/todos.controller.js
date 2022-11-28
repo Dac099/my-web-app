@@ -12,7 +12,7 @@ export async function createTask(url, task){
 
     const post = await res.json();
 
-    console.log(post);
+    return post;
 
   } catch (error) {
     console.log(error);
@@ -36,12 +36,15 @@ export async function deleteTask(url, id){
 }
 
 // Update task
-export async function upateTask(url, id){
+export async function upateTask(url, id, new_data){
   try {
     
     const res = await fetch(`${url}/${id}`, {
       method: 'PUT',
-      body: formData
+      headers: {
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify(new_data)
     })
 
     const data = await res.json();
@@ -74,6 +77,8 @@ export async function getAllTasks(url, userId){
     
     const res = await fetch(`${url}/?userId=${userId}`);
     const data = await res.json();
+
+    return data;
 
   } catch (error) {
     console.log(error);

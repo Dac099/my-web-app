@@ -70,7 +70,7 @@ function createCommentCard(comment){
 }
 
 get_out.addEventListener('click', () => {
-  window.location.replace('../html/index.html');
+  window.location.replace('../index.html');
   localStorage.clear();
 });
 
