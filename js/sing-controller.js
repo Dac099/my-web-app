@@ -26,7 +26,7 @@ signup_btn.addEventListener('click', async () => {
   try {
     const user = await getUser(users_url, userSelected.value);
     saveUser(user[0]);
-    window.location.href = './app.html';
+    window.location.href = './html/app.html';
   } catch (error) {
     console.log(error);
   }

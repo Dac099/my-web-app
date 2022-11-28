@@ -5,7 +5,8 @@ const user_email = document.getElementById('proflie_email');
 const user_phone = document.getElementById('profile_phone');
 const user_website = document.getElementById('profile_website');
 const user_id = document.getElementById('profile_id');
-const last_comments = document.querySelector('.my-last-comments');
+const last_comments = document.querySelector('.comments');
+const get_out = document.getElementById('get-out');
 
 const posts_url = 'https://jsonplaceholder.typicode.com/posts';
 const comments_url = 'https://jsonplaceholder.typicode.com/comments';
@@ -67,6 +68,11 @@ function createCommentCard(comment){
 
   return article;
 }
+
+get_out.addEventListener('click', () => {
+  window.location.replace('../html/index.html');
+  localStorage.clear();
+});
 
 window.onload = async() => {
   // Buil an object from the localstorage data

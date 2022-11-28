@@ -1,10 +1,13 @@
 // Create task
-export async function createTask(url, formData){
+export async function createTask(url, task){
   try {
     
     const res = await fetch(url, {
       method: 'POST',
-      body: formData
+      headers: {
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify(task)
     });
 
     const post = await res.json();
