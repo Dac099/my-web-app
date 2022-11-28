@@ -9,14 +9,52 @@ const tasks_url = 'https://jsonplaceholder.typicode.com/todos';
 function createCardTask(task){
   const task_card = document.createElement('article');
   task_card.classList.add(['card', 'card-task']);
+
+  if(task.completed === false){
+    task_card.classList.add('task-uncompleted');
+  }else{
+    task_card.classList.add('task-completed');
+  }
+
+  task_card.dataset.id = task.id;
   task_card.innerHTML = `
-    <p id="update-task" class="task-action">&#128397;</p>
-    <p id="delete-task" class="task-action">&#128465;</p>
-    <p -data-task-id=${task.id}>${task.title}</p>
-    <p -data-status=${task.completed} id="task-status" class="task-action">
+    <p class="task-action update-task">&#128397;</p>
+    <p class="task-action delete-task">&#128465;</p>
+    <p class="task-title">${task.title}</p>
+    <p data-status=${task.completed} class="task-action, task-status">
       ${(task.completed) ? '&#9745;' : '&#9744;'}
     </p>
   `;
+
+  task_card.addEventListener('click', (e) => {
+    const element = e.target;
+
+    if(element.classList[1] === "update-task"){
+      console.log('Update');
+    }
+
+    if(element.classList[1] === "delete-task"){
+      console.log('Delete');
+    }
+
+    if(element.classList[1] === "task-status"){
+      console.log(element.dataset.status);
+      if(element.dataset.status === "false"){
+        // element.dataset.status = "true";
+        element.innerHTML = '&#9745;';
+        task_card.classList.remove('task-uncompleted')
+        task_card.classList.add('task-completed');
+      }
+
+      if(element.dataset.status === "true"){
+        // element.dataset.status = "false";
+        element.innerHTML = '&#9744;';
+        task_card.classList.remove('task-completed');
+        task_card.classList.add('task-uncompleted');
+      }
+    }
+  });
+
   return task_card;
 }
 

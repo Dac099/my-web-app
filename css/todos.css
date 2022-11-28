@@ -43,3 +43,11 @@ header p:last-child{
   color: var(--text-color);
   cursor: pointer;
 }
+
+.task-uncompleted{
+  background-color: #f582ae;
+}
+
+.task-completed{
+  background-color: #d5c6cc;
+}
