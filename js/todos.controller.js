@@ -49,7 +49,7 @@ export async function upateTask(url, id, new_data){
 
     const data = await res.json();
 
-    console.log(data)
+    return data;
 
   } catch (error) {
     console.log(error);
