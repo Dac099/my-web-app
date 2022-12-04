@@ -44,10 +44,111 @@ header p:last-child{
   cursor: pointer;
 }
 
+.container-tasks{
+  margin: 20px 0px;
+}
+
 .task-uncompleted{
   background-color: #f582ae;
 }
 
 .task-completed{
   background-color: #d5c6cc;
+}
+
+.card{
+  border-radius: 5px;
+  border: 1px solid var(--title-color);
+  margin-bottom: 20px;
+  padding: 5px;
+  height: 100px;
+}
+
+.card>div{
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.update-task, .delete-task{
+  font-size: 20px;
+  cursor: pointer;
+  display: inline;
+  font-weight: bold;
+}
+
+.update-task:hover, .delete-task:hover{
+  transform: scale(1.3);
+}
+
+h3{
+  text-align: center;
+
+  font-size: 25px;
+}
+
+section.add-task{
+  height: 40px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+}
+
+.add-task input{
+  width: 200px;
+  padding: 5px;
+  border: none;
+  border-bottom: 2px solid var(--btn-text);
+  background-color: var(--bg-color);
+}
+
+.add-task input:hover{
+  background-color: var(--button-color);
+  padding-left: 30px;
+  transition: 0.5s ease-in-out;
+}
+
+.add-task input:focus{
+  background-color: var(--button-color);
+  padding-left: 5px;
+  transition: 0.5s ease-in-out;
+}
+
+.add-task button{
+  width: 100px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: var(--button-color);
+  color: var(--btn-text);
+  font-weight: bold;
+  border-color: var(--title-color);
+}
+
+.add-task button:active{
+  background-color: var(--title-color);
+  color: var(--button-color);
+  transition: 0.1s linear;
+}
+
+@media only screen and (min-width: 700px){
+  .uncompleted-tasks, .completed-tasks{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 375px);
+    gap: 10px;
+    margin: 20px auto;
+    justify-content: center;
+  }
+
+  .card{
+    margin: 0px;
+  }
+
+  section.add-task{
+    justify-content: flex-start;
+  }
+
+  section.add-task input{
+    width: 280px;
+  }
 }

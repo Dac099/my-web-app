@@ -10,7 +10,8 @@ const tasks_url = 'https://jsonplaceholder.typicode.com/todos';
 
 function createCardTask(task){
   const task_card = document.createElement('article');
-  task_card.classList.add(['card', 'card-task']);
+  task_card.classList.add('card');
+  task_card.classList.add('card-task');
 
   if(task.completed === false){
     task_card.classList.add('task-uncompleted');
@@ -21,10 +22,12 @@ function createCardTask(task){
   task_card.dataset.id = task.id;
   task_card.dataset.status = task.completed;
   task_card.innerHTML = `
-    <p class="task-action update-task">&#128397;</p>
-    <p class="task-action delete-task">&#128465;</p>
+    <div>
+      <p class="task-action update-task">&#128397;</p>
+      <p class="task-action delete-task">&#128465;</p>
+    </div>
     <p class="task-title">${task.title}</p>
-    <p data-status=${task.completed} class="task-action, task-status">
+    <p data-status=${task.completed} class="task-action task-status">
       ${(task.completed) ? '&#9745;' : '&#9744;'}
     </p>
   `;
