@@ -4,9 +4,24 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="shortcut icon" href="../media/task-list.png" type="image/x-icon">
+  <link rel="stylesheet" href="../css/albums.css">
+  <title>Albums</title>
 </head>
 <body>
+  <header>
+    <a href="./app.html">My Albums</a>
+    <p id="get-out">&#10162;</p>
+  </header>
   
+  <main>
+    <section class="add-new-album">
+      <input type="text" required placeholder="Album name" id="album-title" class="album-title">
+      <button type="button" id="album-btn" class="album-btn">Create</button>
+    </section>
+
+    <section id="albums-container" class="albums-container"></section>
+  </main>
 </body>
+<script src="../js/albums.js" type="module"></script>
 </html>

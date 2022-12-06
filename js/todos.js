@@ -127,6 +127,8 @@ function updateDOMTask(url, taskCard){
     const taskStatus = taskCard.querySelector('.task-status');
     const updateTaskBtn = document.createElement('button');
     const inputTask = document.createElement('input');
+
+    taskTitle.classList.toggle('update-task--section');
     
     updateTaskBtn.classList.add('update-task--btn');
     updateTaskBtn.type = 'button';
@@ -161,6 +163,7 @@ function updateDOMTask(url, taskCard){
         `;
       }
 
+      taskTitle.classList.toggle('update-task--section');
     });
 
   } catch (error) {
