@@ -1,6 +1,6 @@
 export async function getPhotosByAlbum(url, albumId){
   try { 
-    const res = await fetch(`${url}?albumId=${albumId}`);
+    const res = await fetch(`${url}/?albumId=${albumId}`);
     const data = await res.json();
 
     return data;
@@ -39,7 +39,7 @@ export async function updatePhoto(url, photoId, data){
 
 export async function getAlbumsByUser(url, userId){
   try {
-    const res = await fetch(`${url}?userId=${userId}`);
+    const res = await fetch(`${url}/?userId=${userId}`);
     const data = await res.json();
 
     return data;
