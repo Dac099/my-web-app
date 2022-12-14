@@ -11,7 +11,8 @@ function createAlbumCard(album){
   album_card.dataset.id = album.id;
   album_card.classList.add('album-card');
 
-  const album_title = document.createElement('input');
+  const album_title = document.createElement('textarea');
+  album_title.wrap = 'hard';
   album_title.value = album.title;
   album_title.placeholder = 'Task title';
   album_title.classList.add('album-card--title');
@@ -99,7 +100,7 @@ async function photosAlbumPreview(preview_section, albumId){
 
       //Changing a value of the url to get images with widsth=50px
       const url = data[i].thumbnailUrl.split('/');
-      url[3] = '50';
+      url[3] = '60';
       url.join('/');
 
       img.src = url.join('/');
