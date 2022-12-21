@@ -6,6 +6,7 @@ const container = document.getElementById('albums-container');
 const input_album_title = document.getElementById('album-title');
 const album_title_btn = document.getElementById('album-btn');
 
+
 function createAlbumCard(album){
   const album_card = document.createElement('article');
   album_card.dataset.id = album.id;
@@ -49,40 +50,54 @@ function albumCardListeners(album_card, albumId){
 
   preview.addEventListener('click', async () => {
     const photos = await Media.getPhotosByAlbum(photos_url, albumId);
-    const sidebar = createSidebar(photos, albumId);
-
-    const exist_sidebar = document.querySelector('.sidebar-photos');
-    if(exist_sidebar){
-      exist_sidebar.remove();
-    }
-    
-    console.log(sidebar);
-    container.append(sidebar);
+    const sidebar = openAndFillModal(photos, albumId);
   });
 }
 
-function createSidebar(photos, albumId){
-  const sidebar = document.createElement('aside');
-  sidebar.classList.add('sidebar-photos');
-  sidebar.dataset.albumid = albumId;
+function openAndFillModal(photos, albumId){
+  const modal = document.getElementById('modal');
+  const modal_content = document.getElementById('modal-content');
+  const close_btn = document.getElementById('close_btn');
+  const body = document.querySelector('body');
 
-  photos.forEach(photo => {
-    const card_photo =  document.createElement('article');
-    const card_title = document.createElement('p');
-    card_title.innerHTML = photo.title;
-    const photo_element = document.createElement('img');
-    photo_element.classList.add('sidebar-photo');
-    const url = photo.url.split('/');
-    url[3] = '200';
-    photo_element.src = url.join('/');
-    
+  clearContainer(modal_content);
 
-    card_photo.append(card_title);
-    card_photo.append(photo_element);
-    sidebar.append(card_photo);
+  modal.style.display = 'grid';
+  body.style.overflow = 'hidden';
+
+  close_btn.addEventListener('click', () => {
+    modal.style.display = 'none'
+    body.style.overflow = 'auto';
   });
 
-  return sidebar;
+  window.onclick = (e) => {
+    if(e.target === modal){
+      modal.style.display = 'none';    
+      body.style.overflow = 'auto';
+    }
+  }
+
+  photos.forEach(photo => {
+    const card = document.createElement('article');
+    const url = photo.url.split('/');
+    url[3] = '300';
+
+    card.innerHTML = `
+      <p class="photo-card-title">${photo.title}</p>
+      <img src=${url.join('/')} alt="Imagen de un album" class="photo-card-img">
+    `;
+
+    modal_content.append(card);
+  });
+
+  modal.dataset.id = albumId;
+  return modal;
+}
+
+function clearContainer(container){
+  while(container.firstChild != null){
+    container.firstChild.remove();
+  }
 }
 
 async function photosAlbumPreview(preview_section, albumId){
