@@ -48,6 +48,8 @@ header p:last-child{
 }
 
 .posts-container{
+  width: 80%;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,6 +57,7 @@ header p:last-child{
 }
 
 .post-card{
+  position: relative;
   background-color: var(--button-color);
   display: flex;
   flex-wrap: wrap;
@@ -64,7 +67,7 @@ header p:last-child{
   border-radius: 20px;
   border: 1px solid var(--text-color);
   height: 500px;
-  max-width: 900px;
+  width: 100%;
   font-family: var(--task-font);
 }
 
@@ -99,7 +102,7 @@ header p:last-child{
   text-transform: capitalize;
 }
 
-.post-card section:nth-child(1){
+.post-card .post-data{
   width: 60%;
   flex-basis: 450px;
 }
@@ -134,6 +137,181 @@ header p:last-child{
   background-color: var(--task-bg);
   border: 2px solid var(--title-color);
   border-radius: 20px;
-  padding: 5px;
+  padding: 10px;
   margin-bottom: 20px;
+}
+
+.post-comment p:nth-child(1){
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.post-comment p:nth-child(2){
+  text-align: center;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.post-comment p:nth-child(3){
+  text-transform: capitalize;
+  text-align: justify;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 500px;
+  margin: 30px auto;
+}
+
+input.post-title{
+  height: 40px;
+  padding: 5px;
+  border: none;
+  font-size: 15px;
+  border-bottom: 2px solid var(--btn-text);
+  background-color: var(--bg-color);
+  font-family: var(--task-font);
+  text-transform: none;
+}
+
+input.post-title:hover{
+  background-color: var(--button-color);
+  padding-left: 30px;
+  transition: 0.5s ease-in-out;
+}
+
+input.post-title:focus{
+  background-color: var(--button-color);
+  padding-left: 5px;
+  transition: 0.5s ease-in-out;
+}
+
+button.create-post{
+  width: 150px;
+  height: 40px;
+  align-self: flex-end;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: var(--button-color);
+  color: var(--btn-text);
+  font-weight: bold;
+  border-color: var(--title-color);
+}
+
+button.create-post:active{
+  background-color: var(--title-color);
+  color: var(--button-color);
+  transition: 0.1s linear;
+}
+
+textarea.post-body{
+  border: 2px dashed var(--text-color);
+  border-radius: 10px;
+  padding: 10px;
+  font-family: var(--task-font);
+  resize: none;
+  height: 250px;
+  text-transform: none;
+}
+
+.delete-btn{
+  position: absolute;
+  right: 15px;
+  display: none;
+  cursor: pointer;
+}
+
+.delete-btn:hover{
+  transform: scale(1.2) rotate(90deg);
+  transition: 0.2s linear;
+}
+
+.delete-btn:not(:hover){
+  transform: scale(1) rotate(-90deg);
+  transition: 0.2s linear;
+}
+
+.side-tip{
+  background-color: var(--btn-text);
+  border: 2px var(--task-bg) groove;
+  color: var(--bg-color);
+  font-family: var(--task-font);
+  border-radius: 10px;
+  width: 300px;
+  height: 40px;
+  display: grid;
+  place-content: center;
+  position: absolute;
+  left: -300px;
+}
+
+.show-up{
+  animation: show 6s ease-out 1;
+}
+
+@keyframes show{
+  50%{
+    transform: translateX(320px);
+  }
+
+  100%{
+    transform: translateX(-320px);
+  }
+}
+
+
+@media only screen and (max-width: 975px) {
+  body{
+    padding: 5px;
+  }
+
+  .posts-container{
+    width: 100%;
+  }
+
+  .post-card{
+    height: 600px;
+  }
+
+  .post-card .post-comments{
+    height: 65%;
+    max-height: 330px;
+  }
+}
+
+@media only screen and (min-width: 710px) {
+  body{
+    padding: 10px;
+  }
+
+  .posts-container{
+    width: 90%;
+  }
+}
+
+@keyframes shake {
+  25%{
+    transform: translateX(1px);
+    border: 2px dashed var(--task-bg);
+  }
+
+  50%{
+    transform: translateY(1px);
+  }
+
+  75%{
+    transform: translateX(-1px);
+  }
+
+  100%{
+    transform: translateY(-1px);
+  }
+}
+
+.tremble {
+  animation: shake 200ms infinite;
 }

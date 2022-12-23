@@ -7,12 +7,12 @@ export async function createPost(url, data){
 
       method: 'POST',
 
-      body : JSON.parse(data)
+      body : JSON.stringify(data)
     });
     
-    const data = await res.json();
+    const post = await res.json();
 
-    return data;
+    return post;
 
   } catch (error) {
     console.log(error);
@@ -60,7 +60,7 @@ export async function getCommentPost(url){
     const comments = await res.json();
 
     return comments;
-    
+
   } catch (error) {
     console.log(error);
   }
