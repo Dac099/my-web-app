@@ -65,7 +65,6 @@ function createCards(posts){
 function deleteControl(card){
   let timer_control;
   const delete_btn = card.querySelector('.delete-btn');
-  const main = document.querySelector('main');
 
   card.addEventListener('mousedown', () => {
     timer_control = setTimeout(() => {
@@ -79,6 +78,7 @@ function deleteControl(card){
       });
 
       card.classList.add('tremble');
+      sideTool('Press "Escape" for exit of deleting mode');
     }, 1200);
   });
 
@@ -98,11 +98,17 @@ function deleteControl(card){
       });
 
       card.classList.add('tremble');
+      sideTool('Press "Escape" for exit of deleting mode');
     });
   });
 
   card.addEventListener('touchend', () => {
     clearTimeout(timer_control);
+  });
+
+  delete_btn.addEventListener('click', () => {
+    Post.deletePost(posts_url, localStorage.getItem('id'));
+    card.remove();
   });
 }
 
@@ -149,8 +155,10 @@ function sideTool(text){
   
   tool.innerHTML = text;
   tool.classList.add('show-up');
+  tool.classList.remove('hide');
 
   setTimeout(() => {
+    tool.classList.add('hide');
     tool.classList.remove('show-up');
-  }, 7000);
+  }, 4000);
 }

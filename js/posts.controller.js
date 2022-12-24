@@ -26,6 +26,8 @@ export async function deletePost(url, postId){
     })
 
     const data = await res.json();
+
+    return data;
   } catch (error) {
     console.log(error);
   }
